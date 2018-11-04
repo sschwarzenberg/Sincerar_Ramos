@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/try.css') }}">
+
+{% block page_title %}SINCERAR RAMOS{% endblock %}
+
+{% block body %}
+    {{ super() }}
+<script>
+    function move() {
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
+}</script>
+<style>
+h1{
+    font-family: "Roboto Condensed";
+    font-weight: bolder;
+    text-align: center;
+
+}
+h3{
+    font-family: "Roboto";
+    font-weight: bolder;
+    font-stretch:normal;
+    letter-spacing: 1px;
+
+
+}
+#num{
+    font-family: "Roboto";
+    font-weight: bolder;
+    font-size: 400%;
+    line-height:0.9em
+}
+body{
+    font-family: "Roboto";
+}
+h5{
+    line-height:0em;
+    font-family: "Roboto";
+    font-weight: lighter;}
+
+
+#myProgress {
+    width: 100%;
+    background-color: #e5e5e5 ;
+}
+#myBar {
+    height: 20px;
+    background-color: #7ec6c4;
+}
+#myBar2 {
+    height: 20px;
+    background-color: #f4c050;}
+
+#myBar3 {
+    height: 20px;
+    background-color: #e980a2;}
+
+#myBar4 {
+    height: 20px;
+    background-color: #91c14b;}
+
+
+.btn-custom {background: rgba(255, 255, 255, 1); border-color: rgba(252, 194, 3, 1); color: rgba(255, 187, 0, 1); font-size: 14px; border-radius: 7px; border-width: 2px;}
+.btn-custom:hover {background: rgba(250, 192, 0, 1); border-color: rgba(255, 255, 255, 1); color: rgba(255, 255, 255, 1);}
+.btn-custom:active,
+.btn-custom:focus {background: rgba(240, 181, 19, 1); border-color: rgba(252, 189, 15, 1); color: rgba(255, 255, 255, 1);}
+
+}
+</style>
+<br>
+<br>
+    <div class="bs-example" data-example-id="thumbnails-with-custom-content">
+    <div class="row">
+        {% for key, value2 in result.items() %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+            <div class="caption">
+                <h3 >{{ key }}</h3>
+                <br>
+                <div id= "num" class="text-center">{{ value2["promedio"] }}</div>
+                <h5 class="text-center">créditos</h5>
+                <br>
+                <br>
+{#                <p>{{ value2["creditos"] }} </p>#}
+{#                <p> {{ value2["creditos_2"] }}</p>#}
+{#                <p> {{ value2["creditos_3"] }} </p>#}
+{#                <p> {{ value2["creditos_4"] }}</p>#}
+{#                <p> {{ value2["creditos_5"] }}</p>#}
+{#                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>#}
+
+                <div id="myProgress">
+                  <div id="myBar" style="width:60%" ></div>
+                </div>
+                <br>
+                <div id="myProgress">
+                  <div id="myBar2" style="width:30%" ></div>
+                </div>
+                <br>
+                    <div id="myProgress">
+                  <div id="myBar3" style="width:40%" ></div>
+                </div>
+                <br>
+                    <div id="myProgress">
+                  <div id="myBar4" style="width:40%" ></div>
+                </div>
+
+                <br>
+                <br>
+                <p class="text-center"><button type="button" class="btn btn-custom">EVALUAR</button> <button id=bu2 type="button" class="btn btn-custom">DETALLES</button> </p>
+{#            <a href="#" class="btn btn-default" role="button">ver detalles</a#}
+            </div></div> </div>{% endfor %}
+       </div> </div>
+
+
+
+      <ul class="ramos">
+
+         <h2>{% for key, value2 in result.items() %}</h2>
+         <br>
+         <br>
+                {{ key }}
+                {{ value2["promedio"] }}
+            <ul>
+         <br>
+                {% for info, num in value2.items() %}
+               <li>
+                     {{ info }}
+                     {{ num }} </li>
+
+
+         {% endfor %}
+               </ul>
+
+         {% endfor %}
+      </ul>
+
+
+{% endblock %}
+
