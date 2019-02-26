@@ -42,7 +42,6 @@ def FUN_413(error):
 
 @app.route("/")
 def result():
-    creditos=[]
     dict = {}
     for i in data_list:
         dict[i["title"]["$t"]]={"promedio": i["gsx$promedio"][ "$t"],
@@ -56,12 +55,14 @@ def result():
                                 "tareas": i["gsx$tareas"]["$t"],
                                 "proyectos":i["gsx$proyectos"]["$t"],
                                 "laboratorios": i["gsx$laboratorios"]["$t"],
-                                "otros": i["gsx$otros"]["$t"]}
-        creditos.append([i["gsx$creditos"]["$t"],
-                        i["gsx$creditos_2"]["$t"],
-                        i["gsx$creditos_3"]["$t"],
-                        i["gsx$creditos_4"]["$t"],
-                        i["gsx$creditos_5"]["$t"]])
+                                "otros": i["gsx$otros"]["$t"],
+                                "pc5": float(i["gsx$pc5"]["$t"]),
+                                "pc10": float(i["gsx$pc10"]["$t"]),
+                                "pc15": float(i["gsx$pc15"]["$t"]),
+                                "pc20": float(i["gsx$pc20"]["$t"]),
+                                "pc25": float(i["gsx$pc25"]["$t"]),
+                                }
+
     return render_template('hello.html', result = dict )
 #
 @app.route("/try")
@@ -100,6 +101,31 @@ def chart():
                         float(i["gsx$laboratorios"]["$t"]),
                         float(i["gsx$otros"]["$t"])])
     return render_template('try.html', labels=labels, colors=colors,names=names,values=values,set=zip(it,l, c))
+
+@app.route("/try2")
+def resultado():
+    dict = {}
+    for i in data_list:
+        dict[i["title"]["$t"]]={"promedio": i["gsx$promedio"][ "$t"],
+                                "respuestas": i["gsx$respuestas"]["$t"],
+                                "creditos":  i["gsx$creditos"]["$t"],
+                                "creditos_2": i["gsx$creditos_2"]["$t"],
+                                "creditos_3":i["gsx$creditos_3"]["$t"],
+                                "creditos_4": i["gsx$creditos_4"]["$t"],
+                                "creditos_5": i["gsx$creditos_5"]["$t"],
+                                "estudio": i["gsx$estudio"]["$t"],
+                                "tareas": i["gsx$tareas"]["$t"],
+                                "proyectos":i["gsx$proyectos"]["$t"],
+                                "laboratorios": i["gsx$laboratorios"]["$t"],
+                                "otros": i["gsx$otros"]["$t"],
+                                "pc5": float(i["gsx$pc5"]["$t"]),
+                                "pc10": float(i["gsx$pc10"]["$t"]),
+                                "pc15": float(i["gsx$pc15"]["$t"]),
+                                "pc20": float(i["gsx$pc20"]["$t"]),
+                                "pc25": float(i["gsx$pc25"]["$t"]),
+                                }
+
+    return render_template('try2.html', resultado = dict )
 
 # @app.route("/try")
 # def chart():

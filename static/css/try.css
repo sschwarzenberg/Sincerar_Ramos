@@ -10,3 +10,77 @@
 h1{
     color: red
 }
+
+.navbar{
+background-color: whitesmoke;
+    border-bottom-color: lightgrey;
+}
+
+.navbar-brand{
+    font-family: "Roboto Condensed";
+    color: dimgrey;
+
+}
+#titulo{
+    color: dimgrey;
+}
+#deb{
+    color:lightgrey;
+}
+
+
+h1{
+    font-family: "Roboto Condensed";
+    font-weight: bolder;
+    text-align: center;
+
+}
+h3{
+    font-family: "Roboto";
+    font-weight: bolder;
+    font-stretch:normal;
+    letter-spacing: 1px;
+
+
+}
+#num{
+    font-family: "Roboto";
+    font-weight: bolder;
+    font-size: 400%;
+    line-height:0.9em
+}
+body{
+    font-family: "Roboto";
+}
+h5{
+    line-height:0em;
+    font-family: "Roboto";
+    font-weight: lighter;}
+
+
+#myProgress {
+    width: 100%;
+    background-color: #e5e5e5 ;
+}
+#myBar {
+    height: 20px;
+    background-color: #7ec6c4;
+}
+#myBar2 {
+    height: 20px;
+    background-color: #f4c050;}
+
+#myBar3 {
+    height: 20px;
+    background-color: #e980a2;}
+
+#myBar4 {
+    height: 20px;
+    background-color: #91c14b;}
+
+
+.btn-custom {background: rgba(255, 255, 255, 1); border-color: rgba(252, 194, 3, 1); color: rgba(255, 187, 0, 1); font-size: 14px; border-radius: 7px; border-width: 2px;}
+.btn-custom:hover {background: rgba(250, 192, 0, 1); border-color: rgba(255, 255, 255, 1); color: rgba(255, 255, 255, 1);}
+.btn-custom:active,
+.btn-custom:focus {background: rgba(240, 181, 19, 1); border-color: rgba(252, 189, 15, 1); color: rgba(255, 255, 255, 1);}
+

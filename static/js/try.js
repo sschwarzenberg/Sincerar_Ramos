@@ -1,27 +1,86 @@
+//
+//
+//
+// $(function() {
+//    $("#one").addClass("progress-bar-1");
+//    $("#two").addClass("progress-bar-2");
+//    $("#three").addClass("progress-bar-3");
+//    $("#four").addClass("progress-bar-4");
+// });
+//
+// $('.horizontal .progress-fill span').each(function(){
+//   var percent = $(this).html();
+//   $(this).parent().css('width', percent);
+// });
+//
+//
+// $('.vertical .progress-fill span').each(function(){
+//   var percent = $(this).html();
+//   var pTop = 100 - ( percent.slice(0, percent.length - 1) ) + "%";
+//   $(this).parent().css({
+//     'height' : percent,
+//     'top' : pTop
+//   });
+// });
+//
+// var modal = document.querySelector(".modal");
+// var trigger = document.querySelector(".trigger");
+// var closeButton = document.querySelector(".close-button");
+//
+// function toggleModal() {
+//     modal.classList.toggle("show-modal");
+// }
+//
+// function windowOnClick(event) {
+//     if (event.target === modal) {
+//         toggleModal();
+//     }
+// }
+//
+// trigger.addEventListener("click", toggleModal);
+// closeButton.addEventListener("click", toggleModal);
+// window.addEventListener("click", windowOnClick);
+//
+//
+//
 
 
 
-$(function() {
-   $("#one").addClass("progress-bar-1");
-   $("#two").addClass("progress-bar-2");
-   $("#three").addClass("progress-bar-3");
-   $("#four").addClass("progress-bar-4");
-});
+    function move() {
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
 
-$('.horizontal .progress-fill span').each(function(){
-  var percent = $(this).html();
-  $(this).parent().css('width', percent);
-});
+
+    var modal = document.querySelector(".modal");
+var trigger = document.querySelector(".trigger");
+var closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
 
 
-$('.vertical .progress-fill span').each(function(){
-  var percent = $(this).html();
-  var pTop = 100 - ( percent.slice(0, percent.length - 1) ) + "%";
-  $(this).parent().css({
-    'height' : percent,
-    'top' : pTop
-  });
-});
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
+}
+
 
 
 

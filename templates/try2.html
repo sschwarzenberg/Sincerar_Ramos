@@ -1,0 +1,39 @@
+ <head>
+  <title>World population</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+ <div style="position:relative; top:60px; left:10px; width:500px; height:500px;">
+ <canvas id="myChart" ></canvas>
+
+ <script>
+     // Our labels along the x-axis
+var years = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
+// For drawing the lines
+var africa = [86,114,106,106,107,111,133,221,783,2478];
+var asia = [282,350,411,502,635,809,947,1402,3700,5267];
+var europe = [168,170,178,190,203,276,408,547,675,734];
+var latinAmerica = [40,20,10,16,24,38,74,167,508,784];
+var northAmerica = [6,3,2,2,7,26,82,172,312,433];
+var labels1= ['Red',
+                'Yellow',
+                'Blue'];
+var data1 = [10, 20, 30];
+
+var ctx = document.getElementById("myChart");
+
+
+var myChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: labels1,
+    datasets: [
+      {
+        data: data1
+      }
+    ]
+  }
+});
+
+ </script>
+ </div>

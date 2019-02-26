@@ -1,25 +1,39 @@
 {% extends "layout.html" %}
+<head>
+
+
+
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/try.css') }}">
 
-{% block page_title %}SINCERAR RAMOS{% endblock %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="{{ url_for('static', filename='js/try.js') }}"></script>
+
+
+
+</head>
+
+
+
+<h1>SINCERAR RAMOS</h1>
+
 
 {% block body %}
     {{ super() }}
-<script>
-    function move() {
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++;
-            elem.style.width = width + '%';
-        }
-    }
-}</script>
+
+
 <style>
+ul {
+  list-style-type: none;
+}
+
+.hide{
+  display:none;
+}
 h1{
     font-family: "Roboto Condensed";
     font-weight: bolder;
@@ -35,7 +49,7 @@ h3{
 
 }
 #num{
-    font-family: "Roboto";
+    font-family: "Avenir Next";
     font-weight: bolder;
     font-size: 400%;
     line-height:0.9em
@@ -57,9 +71,12 @@ h5{
     height: 20px;
     background-color: #7ec6c4;
 }
+
+
 #myBar2 {
     height: 20px;
-    background-color: #f4c050;}
+    background-color: #f4c050;
+}
 
 #myBar3 {
     height: 20px;
@@ -70,20 +87,71 @@ h5{
     background-color: #91c14b;}
 
 
+
+#myBar:hover {
+  background-color: #129E9D;
+}
+
+#myBar2:hover {
+  background-color: #D8A93B;
+}
+
+#myBar3:hover {
+  background-color: #E5627C;
+}
+
+#myBar4:hover {
+    background-color: #7DAF40;
+}
+
+.bar:after {
+    content:  attr(data-bar);
+    position: inherit;
+    top: -22px;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 2px;
+    border: 1px solid #eee;
+    opacity: 0;
+    transition: 0.5s opacity;
+}
+.bar:hover:after {
+    opacity: 0.5;
+}
+
+#exampleModalLong{
+
+}
+.custom-modal{background: rgba(255, 255, 255, 1); border-color: rgba(252, 194, 3, 1); color: rgba(255, 187, 0, 1); font-size: 14px; border-radius: 7px; border-width: 2px;}
+.custom-modal:hover {background: rgba(250, 192, 0, 1); border-color: rgba(255, 255, 255, 1); color: rgba(255, 255, 255, 1);}
+.custom-modal:active,
+.custom-modal:focus {background: rgba(240, 181, 19, 1); border-color: rgba(252, 189, 15, 1); color: rgba(255, 255, 255, 1);}
+
 .btn-custom {background: rgba(255, 255, 255, 1); border-color: rgba(252, 194, 3, 1); color: rgba(255, 187, 0, 1); font-size: 14px; border-radius: 7px; border-width: 2px;}
 .btn-custom:hover {background: rgba(250, 192, 0, 1); border-color: rgba(255, 255, 255, 1); color: rgba(255, 255, 255, 1);}
 .btn-custom:active,
 .btn-custom:focus {background: rgba(240, 181, 19, 1); border-color: rgba(252, 189, 15, 1); color: rgba(255, 255, 255, 1);}
 
-}
+
 </style>
 <br>
 <br>
+
+    <h1>SINCERAR RAMOS</h1>
+    <br>
+    <br>
+
+    
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nombre o sigla" title="Type in a name">
+<br><br>
     <div class="bs-example" data-example-id="thumbnails-with-custom-content">
-    <div class="row">
+    <div class="row" id="row1">
+<ul id="myUL">
         {% for key, value2 in result.items() %}
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
+        <div class="col-sm-6 col-md-4" >
+            <li> <a class="hide" href="#">{{ key }}</a> <div class="thumbnail" id = {{ key }}>
             <div class="caption">
                 <h3 >{{ key }}</h3>
                 <br>
@@ -91,35 +159,80 @@ h5{
                 <h5 class="text-center">créditos</h5>
                 <br>
                 <br>
-{#                <p>{{ value2["creditos"] }} </p>#}
-{#                <p> {{ value2["creditos_2"] }}</p>#}
-{#                <p> {{ value2["creditos_3"] }} </p>#}
-{#                <p> {{ value2["creditos_4"] }}</p>#}
-{#                <p> {{ value2["creditos_5"] }}</p>#}
-{#                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>#}
-
+                <h5>5 créditos </h5>
                 <div id="myProgress">
-                  <div id="myBar" style="width:60%" ></div>
+                  <div id="myBar" class="bar" style="width:{{ value2["pc5"]}}%" data-bar="{{ value2["creditos"] }}"></div>
+
                 </div>
                 <br>
+                 <h5>10 créditos</h5>
                 <div id="myProgress">
-                  <div id="myBar2" style="width:30%" ></div>
+                  <div id="myBar2" class="bar" style="width:{{ value2["pc10"]}}%" data-bar="{{ value2["creditos_2"] }}"></div>
                 </div>
                 <br>
+                <h5>15 créditos</h5>
                     <div id="myProgress">
-                  <div id="myBar3" style="width:40%" ></div>
+                  <div id="myBar3" class="bar" style="width:{{ value2["pc15"]}}%"  data-bar="{{ value2["creditos_3"] }}"></div>
                 </div>
                 <br>
+                <h5>20 créditos</h5>
                     <div id="myProgress">
-                  <div id="myBar4" style="width:40%" ></div>
+                  <div id="myBar4" class="bar" style="width:{{ value2["pc20"]}}%" data-bar="{{ value2["creditos_4"] }}" ></div>
+                </div>
+                <br>
+                <h5>25 créditos</h5>
+                    <div id="myProgress">
+                  <div id="myBar4" class="bar" style="width:{{ value2["pc25"]}}%"  data-bar="{{ value2["creditos_5"] }}"></div>
                 </div>
 
                 <br>
                 <br>
-                <p class="text-center"><button type="button" class="btn btn-custom">EVALUAR</button> <button id=bu2 type="button" class="btn btn-custom">DETALLES</button> </p>
+                <p class="text-center"><button  onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSf1Nk_EVO1RMkoxH7v5zVngGAFMXLSDAUMZiroNwDBGGYU-fQ/viewform'" type="button" class="btn btn-custom" >EVALUAR</button>
+{#                    <button id=bu2 data-id="{{ key }}" onclick= "func(this)" data-target="#exampleModalLong" data-toggle="modal" type="button" class="btn btn-custom">DETALLES {{ key }}</button> </p>#}
+{#                        <button onclick= "funci(this)" id=bu2 data-idi="{{ key }}" type="button" class="btn btn-custom">DETALLES {{ key }}</button> </p>#}
+                            <button class="btn btn-primary btn-lg custom-modal" id="m" data-id="{{ key }}" data-value="{{ value2 }}" data-promedio="{{ value2["promedio"] }}" data-respuestas="{{ value2["respuestas"] }}" data-creditos1="{{ value2["creditos"] }}" data-creditos_2="{{ value2["creditos_2"] }}" data-creditos_3="{{ value2["creditos_3"] }}" data-creditos_4="{{ value2["creditos_4"] }}"  data-creditos_5="{{ value2["creditos_5"] }}" data-estudio="{{ value2["estudio"] }}" data-tareas="{{ value2["tareas"] }}"  data-proyectos="{{ value2["proyectos"] }}" data-laboratorios="{{ value2["laboratorios"] }}" data-otros="{{ value2["otros"] }}" >
+
+                                DETALLES</button>
+
+
 {#            <a href="#" class="btn btn-default" role="button">ver detalles</a#}
-            </div></div> </div>{% endfor %}
-       </div> </div>
+{#                 {% for key2, value3 in result.items() %}#}
+{#                      {% if key == key2 %}#}
+
+                    <div class="modal fade" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-id= "{{ key }}">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header" >
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                  <h4 class="modal-title" id="Title">  </h4>
+                              </div>
+                              <div class="modal-body" >
+
+                                <p></p>
+                              </div>
+                              <div class="modal-footer">
+
+                                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+
+                {#                            <button type="button" class="btn btn-primary">Save changes</button>#}
+                  </div>
+                </div>
+              </div>
+            </div>
+{#                {% endif %}{% endfor %}#}
+
+
+
+
+
+            </div></div></li> </div> {% endfor %} </ul>
+       </div>
+    </div>
+
+
+
 
 
 
@@ -145,5 +258,87 @@ h5{
       </ul>
 
 
+
+<script>
+    $(function(){
+
+{#        borrar despues#}
+    $.ajax({
+        url: '/try2',
+        success: function(data) {
+            console.log('get info');
+            $('#result').html(JSON.stringify(data, null, '   '));
+            $('#promedio').html(data['promedio']);
+        }
+    });
+    {#        borrar despues#}
+     $('#info').css('display', "none");
+        $('#description').css('display', "none");
+        //console.log(url);
+        $.ajax({
+             url: '/try2',
+{#            url : '/api/calc?a=' + document.getElementById('a').value + '&b=' + document.getElementById('b').value,#}
+            success: function(data) {
+{#                mymodal.find('.modal-body').text(data);#}
+             }
+        });
+
+
+
+  $('.custom-modal').click(function(e){
+    e.preventDefault();
+    var mymodal = $("#exampleModalLong");
+    var mydata2 = '{"result":"los datos de mi dict", "count":42}';
+{#    var lala= document.querySelector('#m');#}
+
+    myname = $(this).attr('data-id');
+    mydata = $(this).attr('data-value');
+    promedio = $(this).attr('data-promedio');
+    respuestas = $(this).attr('data-respuestas');
+    estudio = $(this).attr('data-estudio');
+    tareas = $(this).attr('data-tareas');
+    proyectos = $(this).attr('data-proyectos');
+    laboratorios = $(this).attr('data-laboratorios');
+    otros = $(this).attr('data-otros');
+
+    mymodal.find('.modal-title').text(myname);
+{#    mymodal.find('.modal-body').text('promedio: '+ promedio);#}
+    mymodal.modal('show');
+
+     var labels1= ['Red',
+                    'Yellow',
+                    'Blue'];
+    var data1 = [10, 20, 30];
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: labels1,
+        datasets: [
+          {
+            data: data1
+          }
+        ]
+      }
+    });
+
+
+  });
+
+
+})</script>
+
+
+
+
+
+
+
+
 {% endblock %}
+
+
+
+
 
