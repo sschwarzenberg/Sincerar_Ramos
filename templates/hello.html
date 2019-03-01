@@ -38,6 +38,9 @@ h1{
     font-family: "Roboto Condensed";
     font-weight: bolder;
     text-align: center;
+    letter-spacing: 2px;
+    font-size: 4em;
+
 
 }
 h3{
@@ -54,6 +57,33 @@ h3{
     font-size: 400%;
     line-height:0.9em
 }
+
+#titulo_grande{
+    border-bottom: 1px solid #ccc;
+
+}
+
+
+#inguc {
+    font-family: "Roboto";
+    font-weight: lighter;
+    font-style: italic;
+   width: 100%;
+   text-align: center;
+   border-top: 1px solid #ccc;
+   line-height: 0.1em;
+   margin: 10px 0 -10px;
+    color:#888;
+}
+
+#inguc span {
+    background:#fff;
+    padding:0 10px;
+
+
+}
+
+
 body{
     font-family: "Roboto";
 }
@@ -63,9 +93,33 @@ h5{
     font-weight: lighter;}
 
 
-#myProgress {
-    width: 100%;
+
+p{
+        font-family: "Roboto";
+    font-weight: lighter;}
+
+
+#info_titulo{
+    border-bottom: 1px solid #e5e5e5;
+    color: #888888;
+}
+
+#box_title{
+  background-color: rgba(250, 192, 0, 1);
+  border-radius: 25px;
+  padding: 20px;
+  width: 100%;
+  height: 6%;
+     color:white;
+}
+
+
+.myProgress {
+    width:80%;
     background-color: #e5e5e5 ;
+    position:relative;
+    float: right;
+    margin-right: 10px;
 }
 #myBar {
     height: 20px;
@@ -120,9 +174,49 @@ h5{
     opacity: 0.5;
 }
 
-#exampleModalLong{
 
+.page_container{
+    margin-right: 130px;
+  margin-left: 90px;
 }
+
+.graph_container{
+  display:block;
+  width:300px;
+    margin: 0 auto;
+}
+
+.title_container{
+  display:block;
+  width:500px;
+    margin: 0 auto;
+}
+
+#cred_prom{
+    font-family: "Avenir Next";
+    font-weight: bolder;
+    font-size: 400%;
+    line-height:0.9em
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.space {
+    background-color: transparent;
+    background-repeat: repeat;
+    border-radius:20px;
+    padding: 5px;
+}
+
+
+.custom-modal2{background: rgba(255, 255, 255, 1); border-color: rgba(252, 194, 3, 1); color: rgba(255, 187, 0, 1); font-size: 14px; border-radius: 7px; border-width: 2px;}
+.custom-modal2:hover {background: rgba(250, 192, 0, 1); border-color: rgba(255, 255, 255, 1); color: rgba(255, 255, 255, 1);}
+.custom-modal2:active,
+.custom-modal2:focus {background: rgba(240, 181, 19, 1); border-color: rgba(252, 189, 15, 1); color: rgba(255, 255, 255, 1);}
+
 .custom-modal{background: rgba(255, 255, 255, 1); border-color: rgba(252, 194, 3, 1); color: rgba(255, 187, 0, 1); font-size: 14px; border-radius: 7px; border-width: 2px;}
 .custom-modal:hover {background: rgba(250, 192, 0, 1); border-color: rgba(255, 255, 255, 1); color: rgba(255, 255, 255, 1);}
 .custom-modal:active,
@@ -134,16 +228,23 @@ h5{
 .btn-custom:focus {background: rgba(240, 181, 19, 1); border-color: rgba(252, 189, 15, 1); color: rgba(255, 255, 255, 1);}
 
 
+.myProgress, #cred_type{display: inline-block;}
+#sigla_ramo,#nombre_ramo{display: inline-block;margin-top: -10px}
+.one_bar{margin-top: -10px }
+
+
 </style>
 <br>
 <br>
-
-    <h1>SINCERAR RAMOS</h1>
+    <div class="title_container">
+    <h4 id="inguc"><span>Ingeniería UC</span></h4>
+    <h1 id="titulo_grande">SINCERAR RAMOS</h1>
+     </div>
     <br>
     <br>
 
-    
 
+ <div class="page_container">
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nombre o sigla" title="Type in a name">
 <br><br>
     <div class="bs-example" data-example-id="thumbnails-with-custom-content">
@@ -153,46 +254,165 @@ h5{
         <div class="col-sm-6 col-md-4" >
             <li> <a class="hide" href="#">{{ key }}</a> <div class="thumbnail" id = {{ key }}>
             <div class="caption">
-                <h3 >{{ key }}</h3>
+                <div id="box_title">
+                <h3 id="sigla_ramo" >{{ value2["sigla"] }}</h3><h5 id="nombre_ramo">/ {{ value2["nombre"] }}</h5>
+                </div>
+                <br>
                 <br>
                 <div id= "num" class="text-center">{{ value2["promedio"] }}</div>
                 <h5 class="text-center">créditos</h5>
                 <br>
                 <br>
-                <h5>5 créditos </h5>
-                <div id="myProgress">
+
+{#                    <article#}
+{#                      id="barGraph"#}
+{#                      data-creditos_1="{{ value2["creditos"] }}"#}
+{#                      data-creditos_2="{{ value2["creditos_2"] }}"#}
+{#                      data-creditos_3="{{ value2["creditos_3"] }}"#}
+{#                      data-creditos_4="{{ value2["creditos_4"] }}"#}
+{#                      data-creditos_5="{{ value2["creditos_5"] }}"></article>#}
+{#                    <h1 id="try"></h1>#}
+{#                      <canvas id="Chart_bar"></canvas>#}
+
+
+
+            <div class="one_bar">
+                <h5 id="cred_type">5 </h5>
+                <div class="myProgress">
                   <div id="myBar" class="bar" style="width:{{ value2["pc5"]}}%" data-bar="{{ value2["creditos"] }}"></div>
-
-                </div>
-                <br>
-                 <h5>10 créditos</h5>
-                <div id="myProgress">
-                  <div id="myBar2" class="bar" style="width:{{ value2["pc10"]}}%" data-bar="{{ value2["creditos_2"] }}"></div>
-                </div>
-                <br>
-                <h5>15 créditos</h5>
-                    <div id="myProgress">
-                  <div id="myBar3" class="bar" style="width:{{ value2["pc15"]}}%"  data-bar="{{ value2["creditos_3"] }}"></div>
-                </div>
-                <br>
-                <h5>20 créditos</h5>
-                    <div id="myProgress">
-                  <div id="myBar4" class="bar" style="width:{{ value2["pc20"]}}%" data-bar="{{ value2["creditos_4"] }}" ></div>
-                </div>
-                <br>
-                <h5>25 créditos</h5>
-                    <div id="myProgress">
-                  <div id="myBar4" class="bar" style="width:{{ value2["pc25"]}}%"  data-bar="{{ value2["creditos_5"] }}"></div>
                 </div>
 
+            </div>
+
+                <br>
+            <div class="one_bar">
+                <h5 id="cred_type">10</h5>
+                <div class="myProgress">
+                  <div id="myBar" class="bar" style="width:{{ value2["pc10"]}}%" data-bar="{{ value2["creditos_2"] }}"></div>
+                </div>
+
+            </div>
+                <br>
+            <div class="one_bar">
+                <h5 id="cred_type">15</h5>
+                    <div class="myProgress">
+                  <div id="myBar" class="bar" style="width:{{ value2["pc15"]}}%"  data-bar="{{ value2["creditos_3"] }}"></div>
+                </div>
+            </div>
+                <br>
+            <div class="one_bar">
+                <h5 id="cred_type">20</h5>
+                    <div class="myProgress">
+                  <div id="myBar" class="bar" style="width:{{ value2["pc20"]}}%" data-bar="{{ value2["creditos_4"] }}" ></div>
+                </div>
+            </div>
+                <br>
+            <div class="one_bar">
+                <h5 id="cred_type">25 </h5>
+                    <div class="myProgress">
+                  <div id="myBar" class="bar" style="width:{{ value2["pc25"]}}%"  data-bar="{{ value2["creditos_5"] }}"></div>
+                </div>
+            </div>
+
                 <br>
                 <br>
-                <p class="text-center"><button  onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSf1Nk_EVO1RMkoxH7v5zVngGAFMXLSDAUMZiroNwDBGGYU-fQ/viewform'" type="button" class="btn btn-custom" >EVALUAR</button>
-{#                    <button id=bu2 data-id="{{ key }}" onclick= "func(this)" data-target="#exampleModalLong" data-toggle="modal" type="button" class="btn btn-custom">DETALLES {{ key }}</button> </p>#}
+                <p class="text-center">
+{#                    <button  onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSf1Nk_EVO1RMkoxH7v5zVngGAFMXLSDAUMZiroNwDBGGYU-fQ/viewform'" type="button" class="btn btn-custom" >EVALUAR</button>#}
+                    <button data-toggle="modal" data-target="#EvalModal"  type="button" class="btn btn-primary btn-lg custom-modal2" data-id="{{ key }}"  >EVALUAR</button>
+{#                    <button class="btn btn-primary btn-lg custom-modal" id="m" data-id="{{ key }}" data-target="#EvalModal" >EVAL</button>#}
+                    <button class="btn btn-primary btn-lg custom-modal" id="m" data-id="{{ key }}" data-value="{{ value2 }}" data-promedio="{{ value2["promedio"] }}" data-respuestas="{{ value2["respuestas"] }}" data-creditos_1="{{ value2["creditos"] }}" data-creditos_2="{{ value2["creditos_2"] }}" data-creditos_3="{{ value2["creditos_3"] }}" data-creditos_4="{{ value2["creditos_4"] }}"  data-creditos_5="{{ value2["creditos_5"] }}" data-estudio="{{ value2["estudio"] }}" data-tareas="{{ value2["tareas"] }}"  data-proyectos="{{ value2["proyectos"] }}" data-laboratorios="{{ value2["laboratorios"] }}" data-otros="{{ value2["otros"] }}" >
+                                DETALLES</button></p>
+
+
+                    <!-- Modal -->
+                        <div id="EvalModal" class="modal fade" role="dialog"  >
+                          <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"></h4>
+
+                              </div>
+                              <div class="modal-body">
+                                    <form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSf1Nk_EVO1RMkoxH7v5zVngGAFMXLSDAUMZiroNwDBGGYU-fQ/formResponse" method="post">
+
+                                          <input id="id1" type="hidden"  placeholder="Nombre" name="entry.705016319" required>
+                                    <br>
+                                          <label>Creditos*</label>
+                                          <input type="number" placeholder="Creditos" name="entry.1921843528" required>
+                                    <br>
+                                          <label>Estudio*</label>
+                                          <input type="number" placeholder="Estudio*" name="entry.400278731" min="1" max="10">
+                                    <br>
+                                              <label>Tareas*</label>
+                                          <input type="number" placeholder="Tareas*" name="entry.816789094" min="1" max="10">
+                                    <br>
+                                              <label>Proyectos*</label>
+                                          <input type="number" placeholder="Proyectos*" name="entry.1322386740" min="1" max="10">
+                                    <br>
+                                              <label>Laboratorios*</label>
+                                          <input type="number" placeholder="Estudio*" name="entry.1268868336" min="1" max="10">
+                                    <br>
+                                              <label>Otros*</label>
+                                          <input type="number" placeholder="Otros*" name="entry.476125629" min="1" max="10">
+                                    <br>
+                                      <label>Utilidad*</label>
+                                          <input type="number" placeholder="Utilidad" name="entry.721960215" min="1" max="10">
+                                    <br>
+
+                                      <label>Dificultad</label>
+                                          <input type="number" placeholder="Dificultad" name="entry.1055580868" min="1" max="10">
+                                    <br>
+                                      <label>Aprendizaje</label>
+                                          <input type="number" placeholder="Aprendizaje" name="entry.558885818" min="1" max="10">
+                                    <br>
+
+                                          <label>Comentarios</label>
+                                          <textarea rows="5" placeholder="Comentarios" name="entry.1885526505" ></textarea>
+                                    <br>
+                                          <button type="submit">Send</button>
+                                    </form>
+
+{#                              <form action="https://docs.google.com/forms/d/e/1FAIpQLSdLH6DVXm23dIAfz5CLV0S2J82vGYYq7i_TxAYKHV2ucEb3Zw/formResponse" method="post">#}
+{#                              <label>Name*</label>#}
+{#                              <input id="id1" type="hidden" placeholder="Name*" name="entry.1279407625" required>#}
+{#                        <br>#}
+{#                              <label>Email Address*</label>#}
+{#                              <input type="email" placeholder="Email*" name="entry.1867769267" required>#}
+{#                        <br>#}
+{#                              <label>Subject</label>#}
+{#                              <input type="number" placeholder="Subject*" name="entry.981958982" min="1" max="5">#}
+{#                        <br>#}
+{#                              <label>Message*</label>#}
+{#                              <textarea rows="5" placeholder="Message*" name="entry.791362565" required></textarea>#}
+{#                        <br>#}
+{#                              <button type="submit">Send</button>#}
+{#                        </form>#}
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+{#<button id=bu2 data-id="{{ key }}" onclick= "func(this)" data-target="#exampleModalLong" data-toggle="modal" type="button" class="btn btn-custom">DETALLES {{ key }}</button> </p>#}
 {#                        <button onclick= "funci(this)" id=bu2 data-idi="{{ key }}" type="button" class="btn btn-custom">DETALLES {{ key }}</button> </p>#}
-                            <button class="btn btn-primary btn-lg custom-modal" id="m" data-id="{{ key }}" data-value="{{ value2 }}" data-promedio="{{ value2["promedio"] }}" data-respuestas="{{ value2["respuestas"] }}" data-creditos1="{{ value2["creditos"] }}" data-creditos_2="{{ value2["creditos_2"] }}" data-creditos_3="{{ value2["creditos_3"] }}" data-creditos_4="{{ value2["creditos_4"] }}"  data-creditos_5="{{ value2["creditos_5"] }}" data-estudio="{{ value2["estudio"] }}" data-tareas="{{ value2["tareas"] }}"  data-proyectos="{{ value2["proyectos"] }}" data-laboratorios="{{ value2["laboratorios"] }}" data-otros="{{ value2["otros"] }}" >
 
-                                DETALLES</button>
 
 
 {#            <a href="#" class="btn btn-default" role="button">ver detalles</a#}
@@ -200,7 +420,9 @@ h5{
 {#                      {% if key == key2 %}#}
 
                     <div class="modal fade" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-id= "{{ key }}">
-                          <div class="modal-dialog" role="document">
+
+                          <div class="modal-dialog modal-lg" role="document">
+
                             <div class="modal-content">
                               <div class="modal-header" >
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -209,9 +431,47 @@ h5{
                                   <h4 class="modal-title" id="Title">  </h4>
                               </div>
                               <div class="modal-body" >
+                                  <div class="row">
+                                  <div class="container col-md-12">
+                                      <div class="col-md-6">
+                                           <br> <br>
+                                          <h5 class="text-center">créditos</h5>
+                                    <h1 id="cred_prom"></h1>
 
-                                <p></p>
-                              </div>
+                                      <div class="graph_container">
+                                          <canvas id="Chart1"></canvas>
+                                        </div> </div>
+
+                                  <div class="col-md-6">
+                                     <div style="position:relative; top:10px; left:10px; width:350px; height:350px;">
+                                        <canvas id="myChart"></canvas>
+                                          <br>
+
+                                     </div>
+                                  </div>
+
+{#                     INFORMACION DEL RAMO#}
+                                  <div class="row">
+                                  <div class="container col-md-12">
+                                      <h4 id="info_titulo">INFORMACIÓN DEL CURSO</h4>
+                                      <div class="col-md-6">
+                                                 <div class="space">
+                                          <h4> ¿Para qué sirve?</h4>
+                                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel </p>
+                                        </div></div>
+                                      <div class="col-md-6">
+                                          <div class="space">
+                                          <h4> ¿Qué se ve?</h4>
+                                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel </p>
+                                        </div></div>
+
+
+                                  </div> </div>
+
+                                 <br>
+
+                                </div>
+                                </div>
                               <div class="modal-footer">
 
                                 <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
@@ -221,6 +481,7 @@ h5{
                 </div>
               </div>
             </div>
+
 {#                {% endif %}{% endfor %}#}
 
 
@@ -257,9 +518,78 @@ h5{
          {% endfor %}
       </ul>
 
+</div>
 
 
 <script>
+
+{#document.getElementById("try").value = "lalalal";#}
+var barOptions_stacked = {
+
+    tooltips: {
+        enabled: true,
+        displayColors: false,
+        title: function() {}
+
+    },
+    hover :{
+        animationDuration:0
+    },
+    scales: {
+        xAxes: [{
+
+            ticks: {
+                beginAtZero:true,
+                fontFamily: "'Open Sans Bold', sans-serif",
+                fontSize:11,
+                fontColor: 'white'
+            },
+            scaleLabel:{
+                display:false
+            },
+            gridLines: {display:false,
+                color: "#fff",
+                zeroLineColor: "#fff",
+                zeroLineWidth: 0
+            },
+            stacked: true
+        }],
+        yAxes: [{
+            gridLines: {
+                display:false,
+                color: "#fff",
+                zeroLineColor: "#fff",
+                zeroLineWidth: 0
+            },
+            ticks: {
+                fontFamily: "'Open Sans Bold', sans-serif",
+                fontSize:11
+            },
+            stacked: true
+        }]
+    },
+    legend:{
+        display:false
+    },
+
+    pointLabelFontFamily : "Quadon Extra Bold",
+    scaleFontFamily : "Quadon Extra Bold"
+};
+{#const article = document.querySelector('#barGraph');#}
+{##}
+{#creditos1 = article.dataset.creditos_1; // "3"#}
+{#creditos2 = article.dataset.creditos_2; // "12314"#}
+{#creditos3 = article.dataset.creditos_3; // "cars"#}
+{#creditos4 = article.dataset.creditos_4; // "12314"#}
+{#creditos5 = article.dataset.creditos_5; // "cars"#}
+
+
+
+
+
+
+
+
     $(function(){
 
 {#        borrar despues#}
@@ -283,12 +613,21 @@ h5{
              }
         });
 
+$('.custom-modal2').click(function(e) {
+    e.preventDefault();
+    var myModalEval = $("#EvalModal");
+    myname = $(this).attr('data-id');
+    myModalEval.find('.modal-title').text(myname);
+    document.getElementById("id1").value = myname;
+    var current = myModalEval.getElementById("id1");
+    current.value = 12;
 
+    myModalEval.modal('show');
+});
 
   $('.custom-modal').click(function(e){
     e.preventDefault();
     var mymodal = $("#exampleModalLong");
-    var mydata2 = '{"result":"los datos de mi dict", "count":42}';
 {#    var lala= document.querySelector('#m');#}
 
     myname = $(this).attr('data-id');
@@ -300,31 +639,121 @@ h5{
     proyectos = $(this).attr('data-proyectos');
     laboratorios = $(this).attr('data-laboratorios');
     otros = $(this).attr('data-otros');
+    creditos1 = $(this).attr('data-creditos_1');
+     creditos2 = $(this).attr('data-creditos_2');
+     creditos3 = $(this).attr('data-creditos_3');
+     creditos4 = $(this).attr('data-creditos_4');
+     creditos5 = $(this).attr('data-creditos_5');
+     array_creds = [parseInt(creditos1),parseInt(creditos2),parseInt(creditos3),parseInt(creditos4),parseInt(creditos5)];
+     max_creds = Math.max.apply(null, array_creds);
 
     mymodal.find('.modal-title').text(myname);
+    mymodal.find('#cred_prom').text(promedio);
 {#    mymodal.find('.modal-body').text('promedio: '+ promedio);#}
-    mymodal.modal('show');
+    var labels1= ['estudio', 'tareas', 'proyectos', "laboratorios" , "otros"];
+    var data1 = [estudio, tareas, proyectos, laboratorios , otros];
 
-     var labels1= ['Red',
-                    'Yellow',
-                    'Blue'];
-    var data1 = [10, 20, 30];
+    var labels_cred = [5,10,15,20,25];
+    var data_cred =[creditos1,creditos2, creditos3,creditos4,creditos5];
 
     var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: 'pie',
+
+    if(window.bar != undefined)
+        window.bar.destroy();
+
+    window.bar = new Chart(ctx, {      type: 'pie',
       data: {
         labels: labels1,
         datasets: [
           {
-            data: data1
+            data: data1,
+              backgroundColor: [
+          "#7ec6c4",
+          "#f4c050",
+          "#e980a2",
+          "#91c14b"
+        ],
+        hoverBackgroundColor: [
+          "#129E9D",
+          "#D8A93B",
+          "#E5627C",
+          "#7DAF40"
+        ]
           }
         ]
-      }
+      },
+    options:{
+            legend:{
+        position:"right",
+        labels: {
+        boxWidth: 20},
+        align:"center",
+        legendOptions : {
+  // options are 'start', 'end', 'center'. Default is 'start' which matches old behaviour
+  align: 'stretch'
+}
+    }
+    }
     });
 
 
-  });
+
+
+    var ctx1 = document.getElementById("Chart1");
+    var myChart = new Chart(ctx1, {
+        type: 'horizontalBar',
+
+        data: {
+            labels: labels_cred,
+            datasets: [
+              {
+                data: data_cred,
+                  backgroundColor: [
+              "#7ec6c4",
+     "#7ec6c4",
+     "#7ec6c4",
+     "#7ec6c4",
+     "#7ec6c4",
+    {#          "#f4c050",#}
+    {#          "#e980a2",#}
+    {#          "#91c14b",#}
+    {#          "#1AA4E0"#}
+            ],
+            hoverBackgroundColor: [
+              "#129E9D",
+     "#129E9D",
+     "#129E9D",
+     "#129E9D",
+     "#129E9D",
+    {#          "#D8A93B",#}
+    {#          "#E5627C",#}
+    {#          "#7DAF40",#}
+    {#          "#1AA4E0"#}
+            ]
+              },
+                {
+                data: [max_creds-creditos1+1,max_creds-creditos2+1,max_creds-creditos3+1,max_creds-creditos4+1,max_creds-creditos5+1]
+
+            }
+            ]
+          },
+
+        options: barOptions_stacked
+
+
+
+    });
+
+
+        mymodal.modal('show');
+
+
+
+
+
+
+
+      });
 
 
 })</script>

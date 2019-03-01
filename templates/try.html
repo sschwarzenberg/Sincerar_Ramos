@@ -1,173 +1,91 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="utf-8" />
-    <title>Chart.js </title>      <!-- import plugin script -->
-    <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
-    <script src='static/Chart.min.js'></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-
-</head><body>
-<h1>Flask Chart.js</h1><!-- bar chart canvas element -->
+ <div style="text-align: center; line-height: 50px; color: white; font-size: 18px; font-weight: bold; font-family: &quot;Work Sans&quot;;">
+     <div style="background-color: powderblue; margin: 10px 0px;">Powderblue</div>
+     <div style="background-color: rgb(176, 224, 230); margin: 10px 0px;">#B0E0E6</div>
+     <div style="background-color: rgb(176, 224, 230); margin: 10px 0px;">RGB(176,224,230)</div></div>
 
 
 
-{{labels}} <br>
-{{colors}}<br>
-{#{% for j in range(5) %}#}
-{#{% for i in range(12) %}#}
-{#                    value : {{values[j][i]}}<br>#}
-{#                    label: {{labels[i]}}<br>#}
-{#                    color {{colors[i]}}<br><br>#}
-{#{% endfor %}#}
-{#{% endfor %}#}
 
 
-<!doctype html>
-<html>
-
-<head>
-	<title>Pie Chart</title>
-	<script src="../../dist/Chart.bundle.js"></script>
-	<script src="../utils.js"></script>
-</head>
-
-<body>
-	<div id="canvas-holder" style="width:40%">
-		<canvas id="chart-area"></canvas>
-	</div>
-	<button id="randomizeData">Randomize Data</button>
-	<button id="addDataset">Add Dataset</button>
-	<button id="removeDataset">Remove Dataset</button>
-	<script>
-		var randomScalingFactor = function() {
-			return Math.round(Math.random() * 100);
-		};
-		var config = {
-			type: 'pie',
-			data: {
-				datasets: [{
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-					],
-					backgroundColor: [
-						window.chartColors.red,
-						window.chartColors.orange,
-						window.chartColors.yellow,
-						window.chartColors.green,
-						window.chartColors.blue,
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-					'Red',
-					'Orange',
-					'Yellow',
-					'Green',
-					'Blue'
-				]
-			},
-			options: {
-				responsive: true
-			}
-		};
-		window.onload = function() {
-			var ctx = document.getElementById('chart-area').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-		};
-		document.getElementById('randomizeData').addEventListener('click', function() {
-			config.data.datasets.forEach(function(dataset) {
-				dataset.data = dataset.data.map(function() {
-					return randomScalingFactor();
-				});
-			});
-			window.myPie.update();
-		});
-		var colorNames = Object.keys(window.chartColors);
-		document.getElementById('addDataset').addEventListener('click', function() {
-			var newDataset = {
-				backgroundColor: [],
-				data: [],
-				label: 'New dataset ' + config.data.datasets.length,
-			};
-			for (var index = 0; index < config.data.labels.length; ++index) {
-				newDataset.data.push(randomScalingFactor());
-				var colorName = colorNames[index % colorNames.length];
-				var newColor = window.chartColors[colorName];
-				newDataset.backgroundColor.push(newColor);
-			}
-			config.data.datasets.push(newDataset);
-			window.myPie.update();
-		});
-		document.getElementById('removeDataset').addEventListener('click', function() {
-			config.data.datasets.splice(0, 1);
-			window.myPie.update();
-		});
-	</script>
-</body>
-
-</html>
 
 
-{% for j in range(5) %}
 
 
-    {{names[j]}}
-<canvas id="chart" width="300" height="200"></canvas>
-<script>
-   var pieData = [
-        {% for i in range(12) %}
-            {
-                    value : {{values[j][i]}},
-                    label: "{{labels[i]}}",
-                    color :"{{colors[i]}}"
-
-        }, {% endfor %}
-         ];
-
-   // get bar chart canvas
-   var mychart = document.getElementById("chart").getContext("2d");
-
-   steps = 14;
-   max = 14;
-   // draw pie chart
-   new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
-</script>
 
 
-{% endfor %}
+
+
+
+
+
+
+
+{#<form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSf1Nk_EVO1RMkoxH7v5zVngGAFMXLSDAUMZiroNwDBGGYU-fQ/formResponse" method="post">#}
+{#      <label>Nombre</label>#}
+{#      <input type="hidden" value="asun" placeholder="Nombre" name="entry.705016319" required>#}
+{#<br>#}
+{#      <label>Creditos*</label>#}
+{#      <input type="number" placeholder="Creditos" name="entry.1921843528" required>#}
+{#<br>#}
+{#      <label>Estudio*</label>#}
+{#      <input type="number" placeholder="Estudio*" name="entry.400278731" min="1" max="10">#}
+{#<br>#}
+{#          <label>Tareas*</label>#}
+{#      <input type="number" placeholder="Tareas*" name="entry.816789094" min="1" max="10">#}
+{#<br>#}
+{#          <label>Proyectos*</label>#}
+{#      <input type="number" placeholder="Proyectos*" name="entry.1322386740" min="1" max="10">#}
+{#<br>#}
+{#          <label>Laboratorios*</label>#}
+{#      <input type="number" placeholder="Estudio*" name="entry.1268868336" min="1" max="10">#}
+{#<br>#}
+{#          <label>Otros*</label>#}
+{#      <input type="number" placeholder="Otros*" name="entry.476125629" min="1" max="10">#}
+{#<br>#}
+{#      <label>Comentarios</label>#}
+{#      <textarea rows="5" placeholder="Comentarios" name="entry.1885526505" ></textarea>#}
+{#<br>#}
+{#      <button type="submit">Send</button>#}
+{#</form>#}
 {##}
-{#<canvas id="chart" width="600" height="400"></canvas>#}
-{##}
-{##}
-{#{% for it,l,c in set %}#}
-{##}
-{#                    value: {{it}} <br>#}
-{#                    label: {{l}} <br>#}
-{#                    color : {{c}}<br><br>#}
-{##}
-{#                {% endfor %}#}
-{#<script>#}
-{#   var pieData = [#}
-{#            {% for it,l,c in set %}#}
-{#                {#}
-{#                    value: {{it}},#}
-{#                    label: "{{l}}",#}
-{#                    color : "{{c}}"#}
-{#                },#}
-{#                {% endfor %}#}
-{#         ];#}
-{##}
-{#   // get bar chart canvas#}
-{#   var mychart = document.getElementById("chart").getContext("2d");#}
-{##}
-{#   steps = 10;#}
-{#   max = 10;#}
-{#   // draw pie chart#}
-{#   new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);#}
 
-</script>
 
-</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#<form action="https://docs.google.com/forms/d/e/1FAIpQLSdLH6DVXm23dIAfz5CLV0S2J82vGYYq7i_TxAYKHV2ucEb3Zw/formResponse" method="post">#}
+{#      <label>Name*</label>#}
+{#      <input type="hidden" value="asun" placeholder="Name*" name="entry.1279407625" required>#}
+{#<br>#}
+{#      <label>Email Address*</label>#}
+{#      <input type="email" placeholder="Email*" name="entry.1867769267" required>#}
+{#<br>#}
+{#      <label>Subject</label>#}
+{#      <input type="number" placeholder="Subject*" name="entry.981958982" min="1" max="5">#}
+{#<br>#}
+{#      <label>Message*</label>#}
+{#      <textarea rows="5" placeholder="Message*" name="entry.791362565" required></textarea>#}
+{#<br>#}
+{#      <button type="submit">Send</button>#}
+{#</form>#}

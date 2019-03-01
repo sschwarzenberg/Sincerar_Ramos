@@ -61,6 +61,8 @@ def result():
                                 "pc15": float(i["gsx$pc15"]["$t"]),
                                 "pc20": float(i["gsx$pc20"]["$t"]),
                                 "pc25": float(i["gsx$pc25"]["$t"]),
+                                "sigla": i["gsx$sigla"]["$t"],
+                                "nombre": i["gsx$nombre"]["$t"],
                                 }
 
     return render_template('hello.html', result = dict )
@@ -123,6 +125,8 @@ def resultado():
                                 "pc15": float(i["gsx$pc15"]["$t"]),
                                 "pc20": float(i["gsx$pc20"]["$t"]),
                                 "pc25": float(i["gsx$pc25"]["$t"]),
+                                "sigla": i["gsx$sigla"]["$t"],
+                                "nombre": i["gsx$nombre"]["$t"],
                                 }
 
     return render_template('try2.html', resultado = dict )
